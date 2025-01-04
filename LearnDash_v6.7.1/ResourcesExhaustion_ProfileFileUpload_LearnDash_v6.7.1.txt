@@ -1,0 +1,24 @@
+LearnDash v6.7.1 is affected by Resource Exhaustion in Profile Image File Upload functionality.
+
+Description
+Resource Exhaustion, also known as a Denial of Service (DoS) vulnerability, occurs when a system is overwhelmed by excessive consumption of finite resources such as disk space, memory, CPU cycles, or network bandwidth. This type of vulnerability can lead to system performance degradation, unavailability, or crashes.
+In the specific case of profile image uploads, the vulnerability arises because the system does not replace an existing image when a new one is uploaded. Instead, it creates a new file, even if the file name is the same by adding counter in the end of the filename such as image.png, image_1.png, image_2.png, and so on. Over time, this behavior can lead to disk space exhaustion, especially if users deliberately or accidentally upload a large number of images with the same name. This can result in the following issues:
+	•	System performance degradation due to excessive file storage.
+	•	Application outages if storage is exhausted.
+	•	Administrative burdens to clean up redundant or unused files.
+
+
+Recommendations
+To mitigate the risk of resource exhaustion in this specific scenario, implement the following measures:
+•	Replace Existing Files
+	o	Ensure that only one profile image is stored per user. If a new image is uploaded, replace the old one instead of saving multiple versions
+•	Impose Limits
+	o	The number of files a user can upload per session or per time period.
+	o	The file size of uploads to prevent excessive storage use (e.g., limit to 2MB per image).
+	o	Enforce these limits using backend logic and input validation.
+•	Implement Filename Normalization
+	o	Always normalize and standardize the filename upon upload to avoid storing multiple files with incremented names. For instance:
+			Rename all uploaded profile images to a standard format, such as user_<user_id>_profile.png.
+•	Periodic Cleanup
+	o	Schedule periodic maintenance tasks to identify and delete unused or orphaned files from the storage.
+	o	Use scripts or tools to scan the storage directory for redundant files
