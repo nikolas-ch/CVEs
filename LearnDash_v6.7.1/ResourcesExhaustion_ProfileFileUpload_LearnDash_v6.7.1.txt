@@ -1,4 +1,4 @@
-LearnDash v6.7.1 is affected by Resource Exhaustion in Profile Image File Upload functionality.
+CVE-2024-56940 LearnDash v6.7.1 is affected by Resource Exhaustion in Profile Image File Upload functionality.
 
 Description
 Resource Exhaustion, also known as a Denial of Service (DoS) vulnerability, occurs when a system is overwhelmed by excessive consumption of finite resources such as disk space, memory, CPU cycles, or network bandwidth. This type of vulnerability can lead to system performance degradation, unavailability, or crashes.
