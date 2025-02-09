@@ -1,4 +1,4 @@
-LearnDash v6.7.1 is affected by Stored XSS in materials-content and ld-comment-body classes.
+CVE-2024-56939 LearnDash v6.7.1 is affected by Stored XSS in materials-content and ld-comment-body classes.
 
 Description
 Stored Cross-Site Scripting (Stored XSS) occurs when an application stores malicious scripts in its database or other persistent storage mechanisms. These scripts are then served to other users when they interact with the application. This type of XSS is particularly dangerous because the malicious payload resides on the server and can impact multiple users without requiring additional attacker interaction.
