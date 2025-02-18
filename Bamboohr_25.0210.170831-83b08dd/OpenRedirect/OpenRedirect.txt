@@ -16,8 +16,7 @@ Whitelist Redirects -  Maintain a whitelist of allowed redirect URLs and ensure 
 User Education - Inform users about the risks of phishing and encourage them to verify URLs before clicking on links.
 
 
-
-Possible Impacts:
+Impacts:
 Phishing Attacks - Attackers can craft URLs that appear to be from trusted sources but redirect users to malicious sites designed to steal sensitive information.
 Malware Distribution - Redirects can lead users to sites that automatically download and install malware, compromising user devices and data.
 Credential Theft - Users may be tricked into entering login credentials on fraudulent sites, leading to unauthorized access to their accounts.
