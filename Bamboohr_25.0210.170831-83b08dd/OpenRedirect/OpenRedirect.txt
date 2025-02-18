@@ -9,6 +9,14 @@ An open redirect occurs when a web application accepts untrusted input that spec
 This security issue affects the "/saml/index.php?r=" HTTP GET parameter. This request is executed when the "Log in with Okta" button (SSO Okta mechanism integrated) is clicked. Successful exploitation requires the targeted user to already be authenticated to the Okta service.
 
 
+Impacts:
+Phishing Attacks - Attackers can craft URLs that appear to be from trusted sources but redirect users to malicious sites designed to steal sensitive information.
+Malware Distribution - Redirects can lead users to sites that automatically download and install malware, compromising user devices and data.
+Credential Theft - Users may be tricked into entering login credentials on fraudulent sites, leading to unauthorized access to their accounts.
+Cross-Site Scripting (XSS) - In some cases, open redirects can be exploited to execute malicious scripts in a user's browser, potentially leading to unauthorized actions or data theft.
+Reputation Damage - Exploitation of this vulnerability can damage the trust users place in your product, potentially affecting your company's reputation and user base.
+
+
 Recommendations:
 Input Validation - Implement strict validation of all user inputs, especially those that specify URLs for redirection, to ensure they point to trusted destinations.
 Use Relative URLs - Where possible, use relative URLs for redirection to prevent manipulation of the destination URL.
@@ -16,9 +24,4 @@ Whitelist Redirects -  Maintain a whitelist of allowed redirect URLs and ensure 
 User Education - Inform users about the risks of phishing and encourage them to verify URLs before clicking on links.
 
 
-Impacts:
-Phishing Attacks - Attackers can craft URLs that appear to be from trusted sources but redirect users to malicious sites designed to steal sensitive information.
-Malware Distribution - Redirects can lead users to sites that automatically download and install malware, compromising user devices and data.
-Credential Theft - Users may be tricked into entering login credentials on fraudulent sites, leading to unauthorized access to their accounts.
-Cross-Site Scripting (XSS) - In some cases, open redirects can be exploited to execute malicious scripts in a user's browser, potentially leading to unauthorized actions or data theft.
-Reputation Damage - Exploitation of this vulnerability can damage the trust users place in your product, potentially affecting your company's reputation and user base.
+
