@@ -8,6 +8,8 @@ Description:
 An open redirect occurs when a web application accepts untrusted input that specifies a URL to redirect a user to. If the application does not properly validate or sanitize this input, it can be manipulated by attackers to redirect users to arbitrary, potentially malicious sites. This flaw is commonly exploited in phishing attacks, where users are deceived into visiting fraudulent websites that appear legitimate.
 This security issue affects the "/saml/index.php?r=" HTTP GET parameter. This request is executed when the "Log in with Okta" button (SSO Okta mechanism integrated) is clicked. Successful exploitation requires the targeted user to already be authenticated to the Okta service.
 
+An attacker can send a crafted link to the targeted users via phishing and trick them into clicking on it and redirecting them on an attacker's controlled domain.
+
 
 Impacts:
 Phishing Attacks - Attackers can craft URLs that appear to be from trusted sources but redirect users to malicious sites designed to steal sensitive information.
