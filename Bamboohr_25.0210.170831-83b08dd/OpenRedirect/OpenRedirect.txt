@@ -16,11 +16,6 @@ Whitelist Redirects -  Maintain a whitelist of allowed redirect URLs and ensure 
 User Education - Inform users about the risks of phishing and encourage them to verify URLs before clicking on links.
 
 
-Steps To Reproduce:
-  1. "Log in with Okta" button (SSO Okta mechanism integrated) is clicked.
-  2. Intercept the request and find the affected HTTP GET parameter "/saml/index.php?r=" .
-  3. Replace the URL value of  " r" parameter with attacker's controlled domain/URL.
-
 
 Possible Impacts:
 Phishing Attacks - Attackers can craft URLs that appear to be from trusted sources but redirect users to malicious sites designed to steal sensitive information.
