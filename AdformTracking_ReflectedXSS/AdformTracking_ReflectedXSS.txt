@@ -1,0 +1,47 @@
+Product: Adform Site Tracking (track.adform.net)
+Version: v1.1
+Vendor: Adform
+
+
+Description
+-----------
+Adform Site Tracking is used to collect user data from websites and apps. The data includes visitors' behavior, activity, intent, or interest signals, which can help you understand your audience better and contribute to data-driven business decisions.
+
+An HTML script tag pointing to "https://track.adform.net/Serving/Cookie/?adfaction=getjs;adfcookname=uid" is embedded in the web app's HTML code for requesting JS code that sets a unique user ID (_uid) for the Adform object in the global window scope, initializing Adform if it doesn't already exis.
+
+	<script id="mainThread" text="" charset="" type="text/javascript" src="https://track.adform.net/Serving/Cookie/?adfaction=getjs;adfcookname=uid"></script>
+
+
+So, when requesting the endpoint "https://track.adform.net/Serving/Cookie/?adfaction=getjs;adfcookname=uid" via HTTP GET method, the "Cookie" header's "uid" parameter is affected by Reflective Cross-Site Scripting (XSS) vulnerability where malicious JS payload can be injected and immediately reflected back in the HTTP response (Content-Type: text/javascript; charset=utf-8) as part of a JS code. 
+
+	(function(){var _w=window;_w.Adform=_w.Adform||{};_w.Adform._uid='123456789';})();
+
+
+Then, the malicious JS payload will be executed in the context of the targeted application since this code is retrieved using the script tag embedded in its source code.
+
+	function(){var _w=window;_w.Adform=_w.Adform||{};_w.Adform._uid='12345';});<script>alert("XSS")</script>({'6789';})();
+
+
+
+Scenario
+--------
+1. An attacker can conveince the targeted user to visit a specially crafted page, or trick them into clicking on a link or loading an image.
+2. This would set a poisoned cookie in the victim’s browser for the adform.net.
+3. The next time the victim visits the targeted app, their browser makes a request to the vulnerable endpoint "https://track.adform.net/Serving/Cookie/?adfaction=getjs;adfcookname=uid" via the script tag.
+4. This request would include the malicious cookie value (JS Payload).
+5. Then, the requested JS code (including malicious JS) would be executed by the targeted app.
+
+
+
+Risk
+----
+This security issue can affect any application that makes use of this 3rd party service and it can lead to JS arbitrary code allowing session hijacking, credential theft, unauthorized actions, etc.
+
+
+
+Risk Mitigations
+----------------
+1. Sanitize input data before embedding it into JS responses.
+2. Enable HttpOnly flag. It prevents JavaScript access to sensitive cookies.
+
+
