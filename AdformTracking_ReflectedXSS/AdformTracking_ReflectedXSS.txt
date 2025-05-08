@@ -14,11 +14,13 @@ An HTML script tag pointing to "https://track.adform.net/Serving/Cookie/?adfacti
 
 So, when requesting the endpoint "https://track.adform.net/Serving/Cookie/?adfaction=getjs;adfcookname=uid" via HTTP GET method, the "Cookie" header's "uid" parameter is affected by Reflective Cross-Site Scripting (XSS) vulnerability where malicious JS payload can be injected and immediately reflected back in the HTTP response (Content-Type: text/javascript; charset=utf-8) as part of a JS code. 
 
+	Original Response:
 	(function(){var _w=window;_w.Adform=_w.Adform||{};_w.Adform._uid='123456789';})();
 
 
 Then, the malicious JS payload will be executed in the context of the targeted application since this code is retrieved using the script tag embedded in its source code.
 
+	Malicious Response:
 	function(){var _w=window;_w.Adform=_w.Adform||{};_w.Adform._uid='12345';});<script>alert("XSS")</script>({'6789';})();
 
 
