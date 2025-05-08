@@ -24,7 +24,7 @@ Then, the malicious JS payload will be executed in the context of the targeted a
 	function(){var _w=window;_w.Adform=_w.Adform||{};_w.Adform._uid='12345';});<script>alert("XSS")</script>({'6789';})();
 
 
-Note: The cookie value implements only secure flag as protection. This doesn't prevent attacks like the one described in the following scenario.
+Note: The cookie value only applies secure flag as protection. This doesn't prevent attacks like the one described in the following scenario.
 
 
 Scenario
