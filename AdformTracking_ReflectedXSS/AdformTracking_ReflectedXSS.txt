@@ -26,10 +26,10 @@ Then, the malicious JS payload will be executed in the context of the targeted a
 Scenario
 --------
 1. An attacker can convince the targeted user to visit a specially crafted page, or trick them into clicking on a link or loading an image.
-2. This would set a poisoned cookie in the victim’s browser for the adform.net.
+2. This will set a poisoned cookie in the victim’s browser for the adform.net.
 3. The next time the victim visits the targeted app, their browser makes a request to the vulnerable endpoint "https://track.adform.net/Serving/Cookie/?adfaction=getjs;adfcookname=uid" via the script tag.
-4. This request would include the malicious cookie value (JS Payload).
-5. Then, the requested JS code (including malicious JS) would be executed by the targeted app.
+4. This request will include the malicious cookie value (JS Payload).
+5. Then, the requested JS code (including malicious JS) will be executed by the targeted app.
 
 
 
