@@ -33,9 +33,9 @@ Scenario
 
 2. The victim visits the malicious page, which causes the JavaScript on the malicious page to set the poisoned cookie in the victim’s browser. This cookie has been tampered with to include malicious JavaScript within the value.
 
-3. The next time the Adform script is executed in the targeted app, the browser makes a request to the "https://track.adform.net/Serving/Cookie/?adfaction=getjs;adfcookname=uid", , which includes the poisoned cookie that contains the malicious JS payload.
+3. The next time the Adform script is executed in the targeted app, the browser makes a request to the "https://track.adform.net/Serving/Cookie/?adfaction=getjs;adfcookname=uid", which includes the poisoned cookie that contains the malicious JS payload.
 
-4. Then, the requested JS code (including malicious JS) will be executed by the targeted app.
+4. Then, the Adform server replies with JS code (including malicious JS payload), which is executed in the context of the targeted app.
 
 
 
