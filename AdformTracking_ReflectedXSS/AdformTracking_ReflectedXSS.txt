@@ -29,11 +29,13 @@ Note: The cookie value only applies secure flag as protection. This doesn't prev
 
 Scenario
 --------
-1. The attacker crafts a malicious webpage with JavaScript that makes a cross-site request to the target application. The malicious page includes code that interacts with the targeted app — specifically, it modifies the uid cookie.
-4. When a targeted user visits the malacious page, then this page will execute malicious JS code that sets a poisoned cookie in the victim’s browser for the adform.net.
-5. The next time the Adform script tag is executed in the targeted app, the browser makes a request to the vulnerable endpoint "https://track.adform.net/Serving/Cookie/?adfaction=getjs;adfcookname=uid".
-6. This request will include the malicious cookie value (JS Payload).
-7. Then, the requested JS code (including malicious JS) will be executed by the targeted app.
+1. The attacker crafts a malicious webpage with JavaScript that makes a cross-site request to the target application. This malicious page includes code that sets a poisoned cookie for adform.net with a malicious JavaScript payload as part of the cookie value. This is essentially injecting arbitrary JS code into the cookie value.
+
+2. The victim visits the malicious page, which causes the JavaScript on the malicious page to set the poisoned cookie in the victim’s browser. This cookie has been tampered with to include malicious JavaScript within the value.
+
+3. The next time the Adform script is executed in the targeted app, the browser makes a request to the "https://track.adform.net/Serving/Cookie/?adfaction=getjs;adfcookname=uid", , which includes the poisoned cookie that contains the malicious JS payload.
+
+4. Then, the requested JS code (including malicious JS) will be executed by the targeted app.
 
 
 
