@@ -27,8 +27,8 @@ Then, the malicious JS payload will be executed in the context of the targeted a
 Note: The cookie value only applies secure flag as protection. This doesn't prevent attacks like the one described in the following scenario.
 
 
-Scenario
---------
+CSRF Scenario
+-------------
 1. The attacker crafts a malicious webpage with JavaScript that makes a cross-site request to the target application. This malicious page includes code that sets a poisoned cookie for adform.net with a malicious JavaScript payload as part of the cookie value. This is essentially injecting arbitrary JS code into the cookie value.
 
 2. The victim visits the malicious page, which causes the JavaScript on the malicious page to set the poisoned cookie in the victim’s browser. This cookie has been tampered with to include malicious JavaScript within the value.
