@@ -1,0 +1,26 @@
+Weak Authorization Control - Unauthorized Access to Project Issues
+
+
+Affected Product Versions: Sentry (>=) 25.1.0
+
+
+Summary:
+An unauthorized user can access a project's "issue" endpoint and do unauthorized actions e.g. add or remove comments or do other actions through various tabs that are available, without being a member of the project's team. The value of the issue id (7-digit number in URL) should be known for this attack to be successful. It is possible for someone to predict it via fuzzing. Note that only the value of the issue id is needed.
+
+In this case scenario, the user "Niko..." is the admin of the targeted project, and "Ol...a t" is the unauthorized user.
+
+
+
+Impact:
+An unauthorized malicious user can acquire sensitive info for a project, add comments with malicious intend, etc. 
+
+
+
+Recommendation:
+Implement strong authorization access control in all endpoints.
+Use unpredictables values such as hashes or UUID for identification values.
+
+
+
+
+
