@@ -1,4 +1,4 @@
-Weak Authorization Control - Unauthorized Access to Project Issues
+CVE-2025-53073 - Weak Authorization Control - Unauthorized Access to Project Issues
 
 
 Affected Product Versions: Sentry (>=) 25.1.0
