@@ -1,0 +1,28 @@
+Arbitrary Code Execution (JavaScript) & OS Command Injection (Python) in N8N v1.95.3
+------------------------------------------------------------------------------------
+
+Description
+-----------
+The "Code" trigger of "Workflow" in N8N v1.95.3 allows user-supplied input to be executed directly—either via JavaScript functions like eval() or Python OS calls such as os.system. This leads to arbitrary code or command execution. In JavaScript, an attacker can run malicious scripts in the browser. In Python, attackers can inject OS-level commands on the server/host.
+
+
+
+
+Impact
+------
+Client-side (JavaScript):
+	Stealing session cookies, credentials, or sensitive data.
+	Defacing the application or redirecting users.
+	Exploiting APIs with the user’s privileges.
+
+Server-side (Python):
+	Full server compromise, data theft, or destruction.
+	Privilege escalation and lateral movement.
+	Installation of backdoors or malware.
+
+
+
+
+Recommendation
+--------------
+Use of Python Sandbox environment to prevent execution of dangerous funtions.
