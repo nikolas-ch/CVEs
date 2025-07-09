@@ -3,7 +3,7 @@ Stored XSS via Unristricted File Upload in N8N Chat Trigger
 
 Description
 -----------
-The "Chat Trigger" of "Workflow" in N8N v1.95.3 and v1.100.1 allows users to upload file formats like .html without properly restricting the file type or validating content. Malicious users can upload a malicious .html file containing JavaScript. When another user opens or previews the uploaded file, the malicious script executes in their browser in the context of the application (Stored XSS).
+The "Chat Trigger" of "Workflow" in N8N v1.95.3, v1.100.1, and v1.101.1 allows users to upload file formats like .html without properly restricting the file type or validating content. Malicious users can upload a malicious .html file containing JavaScript. When another user opens or previews the uploaded file, the malicious script executes in their browser in the context of the application (Stored XSS).
 
 
 
