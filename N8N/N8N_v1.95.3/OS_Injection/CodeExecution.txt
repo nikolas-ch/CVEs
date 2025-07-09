@@ -25,4 +25,4 @@ Server-side (Python):
 
 Recommendation
 --------------
-Use of Python Sandbox environment to prevent execution of dangerous funtions.
+Use of Python Sandbox environment to prevent execution of dangerous functions.
