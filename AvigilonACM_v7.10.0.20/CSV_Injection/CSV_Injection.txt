@@ -6,7 +6,7 @@ Product Version: ACM 7.10.0.20
 
 Description
 -----------
-CSV Injection occurs when user-supplied data is exported into a CSV (Comma-Separated Values) file, which is then opened in spreadsheet software like Microsoft Excel, LibreOffice Calc, or Google Sheets.
+The "/id_profiles" endpoint (Export Functionality) in Avigilon ACM 7.10.0.20 is affected by CSV Injection (aka Formula Injection). This occurs when user-supplied data is exported into a CSV (Comma-Separated Values) file, which is then opened in spreadsheet software like Microsoft Excel, LibreOffice Calc, or Google Sheets.
 Since these programs interpret certain characters (like =, +, -, or @) at the beginning of a cell as formulas, a malicious user can inject payloads like:
 	=cmd|' /C calc'!A0
 	=HYPERLINK("http://malicious.site","Click here")
