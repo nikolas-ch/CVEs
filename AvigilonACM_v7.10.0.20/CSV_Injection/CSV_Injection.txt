@@ -1,0 +1,46 @@
+CSV Injection
+=============
+
+Product Version: ACM 7.10.0.20
+
+
+Description
+-----------
+CSV Injection occurs when user-supplied data is exported into a CSV (Comma-Separated Values) file, which is then opened in spreadsheet software like Microsoft Excel, LibreOffice Calc, or Google Sheets.
+Since these programs interpret certain characters (like =, +, -, or @) at the beginning of a cell as formulas, a malicious user can inject payloads like:
+	=cmd|' /C calc'!A0
+	=HYPERLINK("http://malicious.site","Click here")
+	@SUM(1+1)
+When the CSV is opened, Excel will execute the formula, potentially:
+	1. Launching a reverse shell.
+	2. Exfiltrating data to external servers.
+	3. Displaying misleading content or phishing prompts.
+This happens because the application fails to sanitize or escape data before including it in the exported file.
+
+
+
+
+Impact
+------
+1. The impact of a CSV injection vulnerability depends on how and where the exported file is opened:
+		Command Execution	- Excel on Windows can execute arbitrary commands using payloads like `=cmd
+		Data Exfiltration	- Formulas like =WEBSERVICE() or =HYPERLINK() can send sensitive data to an attacker-controlled server.
+		Phishing	        - Malicious formulas may trick users into clicking links or entering credentials.
+		Integrity Issues	- Injected formulas can alter displayed data, leading to misleading reporting.
+2. This particularly affects:
+		Admins or employees opening the exported files.
+		Systems where CSV files are imported into other tools or pipelines.
+
+
+
+Recommendations
+---------------
+1. Escape Dangerous Characters
+		Prefix any cell starting with =, +, -, or @ with a single quote (') or space to neutralize formula execution:
+			=SUM(1+1) → '=SUM(1+1)
+		Most spreadsheet apps will display the formula as plain text.
+2. Sanitize User Inputs
+		Validate and sanitize all user-supplied data before including it in exports.
+		Remove or encode dangerous characters where possible.
+3. Use Libraries with Built-in Protections
+		Use libraries like Python’s pandas.to_csv() with parameter escapechar or use libraries like ExcelJS (Node.js) that can escape formulas.
