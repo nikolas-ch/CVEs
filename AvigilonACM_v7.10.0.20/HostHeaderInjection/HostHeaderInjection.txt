@@ -1,0 +1,44 @@
+Host Header Injection
+=====================
+
+
+Product Version: Vigilon ACM 7.10.0.20
+
+
+Description
+-----------
+A Host Header Injection vulnerability occurs when an application uses the value of the HTTP Host header (provided by the client) without proper validation or sanitization.
+In your scenario, the application takes the Host header from incoming requests and:
+	Embeds it directly into server-side code logic.
+	Uses it to construct URLs for redirects, links, or absolute paths.
+This means a malicious user can send requests with a crafted Host header like:
+	Host: attacker.com
+The application will then trust and propagate this header value into redirects or dynamic content generation.
+
+
+
+Impact
+------
+Exploiting this vulnerability can lead to:
+	Web Cache Poisoning	Caches   - (like Varnish, CDNs) may store responses with attacker-supplied Host headers.
+	Open Redirect	             - Users could be redirected to attacker-controlled domains.
+	Password Reset Poisoning	 - Password reset links sent to users may point to attacker-controlled servers, allowing credential theft.
+	Bypass of Security Controls	 - If logic depends on the Host header (e.g., subdomain restrictions), it may be bypassed.
+	Phishing / Branding Attacks	 - Attackers can craft links or emails that appear to originate from a trusted domain.
+
+
+
+Recommendations
+---------------
+1. Validate the Host Header
+	Whitelist expected hostnames on the server. For example, allow only yourapp.com and www.yourapp.com.
+	Reject requests with unexpected Host headers:
+		allowed_hosts = ['yourapp.com', 'www.yourapp.com']
+		if request.host not in allowed_hosts:
+		    abort(400)
+2. Avoid Using Host Header for URL Generation
+	Use a hardcoded application base URL for building absolute URLs in emails, redirects, or API responses:
+	BASE_URL = "https://yourapp.com"
+	redirect(BASE_URL + "/dashboard")
+3. Sanitize Output
+	Never reflect the Host header back to the client without escaping or validation.
