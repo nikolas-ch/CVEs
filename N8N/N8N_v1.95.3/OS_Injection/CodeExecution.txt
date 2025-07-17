@@ -1,7 +1,7 @@
 Arbitrary Code Execution (JavaScript) & OS Command Injection (Python) in N8N v1.95.3
 ------------------------------------------------------------------------------------
 
-This hasn't been assigned with CVE ID by n8n security team since it has been fixed in a newer version of the product.
+No CVE ID has been assigned to this by n8n security team since it has been fixed in a newer version of the product.
 
 
 Description
