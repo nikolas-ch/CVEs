@@ -1,3 +1,6 @@
+XSS/HTMLi in Adform Site Tracking v1.1 - CVE-2025-50891 
+=======================================================
+
 Product: Adform Site Tracking (track.adform.net)
 Version: v1.1
 Vendor: Adform
