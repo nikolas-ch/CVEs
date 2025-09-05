@@ -1,5 +1,5 @@
-Host Header Injection
-=====================
+Vigilon ACM ACM 7.10.0.20 - Host Header Injection - CVE-2025-56266
+===================================================================
 
 
 Product Version: Vigilon ACM 7.10.0.20
