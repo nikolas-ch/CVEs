@@ -1,7 +1,6 @@
-Stored XSS via Unristricted File Upload in N8N Chat Trigger
------------------------------------------------------------
+Stored XSS via Unristricted File Upload in N8N Chat Trigger / CVE-2025-56265
+-----------------------------------------------------------------------------
 
-No CVE ID has been assigned to this, as it is not considered a security issue by the n8n security team.
 
 Description
 -----------
