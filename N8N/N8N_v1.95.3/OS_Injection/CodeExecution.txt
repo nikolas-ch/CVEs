@@ -1,5 +1,5 @@
-Arbitrary Code Execution in N8N v1.95.3
----------------------------------------
+Authenticated Remote Code Execution in N8N v1.95.3
+--------------------------------------------------
 
 
 Description
