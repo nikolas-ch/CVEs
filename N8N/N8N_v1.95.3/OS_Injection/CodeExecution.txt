@@ -1,8 +1,6 @@
 Arbitrary Code Execution in N8N v1.95.3
 ---------------------------------------
 
-No CVE ID has been assigned to this by n8n security team since it has been fixed in a newer version of the product.
-
 
 Description
 -----------
