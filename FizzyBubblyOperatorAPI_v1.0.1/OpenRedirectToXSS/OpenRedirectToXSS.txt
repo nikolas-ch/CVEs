@@ -1,0 +1,33 @@
+Open Redirect to XSS
+--------------------
+
+Product: Fizzy Bubbly Operator API 1.0.0
+Vendor: Bump.sh
+
+
+
+Description
+The web application reflects user-controlled input from the "lobbyUrl" GET parameter directly into the href attribute of the "exitGame" button on 401 (Unauthorized) and 403 (Forbidden) error pages. Because the input is not properly validated or sanitized, an attacker can craft a URL containing a JavaScript URI scheme (e.g. javascript:alert(1)) or other malicious scripts. When a victim accesses the crafted URL and clicks the “Exit Game” button, the JavaScript executes in the victim’s browser context. This is effectively a reflected cross-site scripting (XSS) vulnerability triggered via an open redirect vector. It combines the risks of both open redirect and XSS in a way that could be exploited for credential theft, phishing, or malware distribution.
+
+
+
+
+Impact 
+Reflected XSS Execution: Allows attackers to execute arbitrary JavaScript in the context of the victim’s session.
+Phishing and Social Engineering: Malicious URLs can redirect users to attacker-controlled pages or trick them into performing sensitive actions.
+Credential Theft: Attackers can steal credentials or session tokens.
+Malware Delivery: Attackers could inject scripts that download malicious files or exploit browser vulnerabilities.
+
+
+
+
+Recommendations
+Validate and Sanitize Input:
+	Only allow lobbyUrl to contain valid, trusted URLs (e.g. use a whitelist of allowed domains).
+	Reject or encode any input containing javascript:, data:, or other potentially executable URI schemes.
+Encode Output Properly:
+	Ensure that values inserted into HTML attributes are HTML-attribute encoded to prevent script execution.
+Avoid Using User Input in href Directly:
+	If possible, remove href assignment from user-controlled input and handle redirects server-side.
+
+
