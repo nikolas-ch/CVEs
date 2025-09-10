@@ -7,7 +7,7 @@ Vendor: Bump.sh
 
 
 Description
-The web application reflects user-controlled input from the "lobbyUrl" GET parameter directly into the href attribute of the "exitGame" button on 401 (Unauthorized) and 403 (Forbidden) error pages. Because the input is not properly validated or sanitized, an attacker can craft a URL containing a JavaScript URI scheme (e.g. javascript:alert(1)) or other malicious scripts. When a victim accesses the crafted URL and clicks the “Exit Game” button, the JavaScript executes in the victim’s browser context. This is effectively a reflected cross-site scripting (XSS) vulnerability triggered via an open redirect vector. It combines the risks of both open redirect and XSS in a way that could be exploited for credential theft, phishing, or malware distribution.
+The web application reflects user-controlled input from the "lobbyUrl" GET parameter directly into the href attribute of the "exitGame" button (<a> HTML tag) on 401 (Unauthorized) and 403 (Forbidden) error pages. Because the input is not properly validated or sanitized, an attacker can craft a URL containing a JavaScript URI scheme (e.g. javascript:alert(1)) or other malicious scripts. When a victim accesses the crafted URL and clicks the “Exit Game” button, the JavaScript executes in the victim’s browser context. This is effectively a reflected cross-site scripting (XSS) vulnerability triggered via an open redirect vector. It combines the risks of both open redirect and XSS in a way that could be exploited for credential theft, phishing, or malware distribution.
 
 
 
