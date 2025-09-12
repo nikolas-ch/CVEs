@@ -1,0 +1,30 @@
+Reflected XSS
+=============
+
+Vendor: Zeta Global
+
+Product: Zeta Marketing Platform (ZMP) v1.0
+
+Role of rfihub.com: Facilitates programmatic advertising through third-party cookies, enabling personalized marketing and tracking.
+
+
+
+Description
+The "ca" GET parameter on "p.rfihub.com" is vulnerable to reflected Cross-Site Scripting (XSS). User-supplied input passed through this parameter is returned by the server without proper validation or encoding, allowing an attacker to inject malicious JS code into the response. When a victim clicks a crafted URL containing a payload in the "ca" parameter, the injected script executes in the context of the victim’s browser, potentially leading to unauthorized actions or data exposure. This vulnerability arises from insufficient input sanitization and improper output handling.
+
+
+
+Impacts
+Session Hijacking: Attackers can steal cookies or session tokens, compromising user accounts.
+Phishing: Users can be tricked into submitting sensitive data to attacker-controlled endpoints.
+Defacement: Injected scripts can alter page content or display unwanted messages.
+Malware Delivery: Scripts can redirect users to malicious downloads or exploits.
+
+
+
+
+Recommendations
+Input Validation: Restrict the "ca" parameter to expected values.
+Sanitization: Use a HTML/JS sanitizer.
+Output Encoding: Apply context-aware HTML encoding before displaying user input.
+Content Security Policy (CSP): Restrict execution of untrusted scripts.
