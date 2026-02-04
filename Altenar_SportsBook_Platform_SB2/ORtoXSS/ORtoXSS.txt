@@ -1,0 +1,36 @@
+Open Redirect to XSS
+--------------------
+
+Product:  Altenar's Sportsbook Software Platform (SB2) v2
+Vendor:   Altenar
+
+
+
+Description
+The web application's JavaScript code dynamically generates an iframe by using a user-controlled input from the "url" GET parameter. JS code sets the src (source) of the created iframe element to that url input and finally it sticks that iframe inside the "streamContainer" element so that the user can actually see it. Because the input is not properly validated or sanitized, an attacker can craft a URL containing a "data" URI scheme e.g. data:text/html. When a victim user clicks on the malicious crafted link, the victim’s browser executes the affected JS code and then it renders the content of the malicious iframe. This is a reflected cross-site scripting (XSS) vulnerability triggered via an open redirect vector. It combines the risks of both open redirect and XSS in a way that could be exploited for credential theft, phishing, or malware distribution.
+
+
+
+
+Impact 
+Reflected XSS Execution: Allows attackers to execute arbitrary JavaScript in the context of the victim’s session.
+Phishing and Social Engineering: Malicious URLs can redirect users to attacker-controlled pages or trick them into performing sensitive actions.
+Credential Theft: Attackers can steal credentials or session tokens.
+Malware Delivery: Attackers could inject scripts that download malicious files or exploit browser vulnerabilities.
+
+
+
+
+Recommendations
+Validate and Sanitize Input:
+	Only allow url to contain valid, trusted URLs (e.g. use a whitelist of allowed domains).
+	Reject or encode any input containing data:, javascript:, or other potentially executable URI schemes.
+Encode Output Properly:
+	Ensure that values inserted into HTML attributes are HTML-attribute encoded to prevent script execution.
+Avoid Using User Input for generating iframe:
+	If possible, remove href assignment from user-controlled input and handle redirects server-side.
+
+
+
+
+	
